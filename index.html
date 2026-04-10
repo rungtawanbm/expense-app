@@ -27,12 +27,13 @@
         return;
       }
 
-      fetch("https://script.google.com/macros/s/AKfycbyDRAkFFkcAeOVBCjLH_Ds7FskCi3t8tf1_51lB40r7-nzPvgVKQxJwfX8DKgIvOY_v/exec", {
+      fetch("https://script.google.com/macros/s/AKfycbymLJ5y6b12-KC5Jbrk1xV953yQFtehsb5ukyOjiBdTcrDtb5dZ9anca2t6UABOHL4KTQ/exec", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({ text: text })
+        body: JSON.stringify({ text: text }),
+        mode: "no-cors"
       })
       .then(res => res.text())
       .then(() => {
