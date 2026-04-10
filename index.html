@@ -1,21 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
   <title>Expense</title>
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <style>
-    body { font-family: sans-serif; padding: 20px; }
-    input { width: 100%; font-size: 18px; padding: 10px; }
-    button { width: 100%; font-size: 20px; padding: 12px; margin-top: 10px; }
-  </style>
 </head>
-
 <body>
   <h2>บันทึกรายจ่าย</h2>
-
   <input type="text" id="text" placeholder="เช่น ข้าว 50">
   <button onclick="send()">บันทึก</button>
 
@@ -23,14 +12,10 @@
     function send() {
       const text = document.getElementById("text").value;
 
-      fetch("https://script.google.com/macros/s/AKfycbz6fvBwLT7aoEylDGl44UZTE6aWnofV3KCKcookYLDE8E8j6Syc3JOt67_7rBKf25VFWA/exec", {
+      fetch("YOUR_WEB_APP_URL", {
         method: "POST",
         body: JSON.stringify({ text: text })
-      })
-      .then(() => {
-        alert("บันทึกแล้ว");
-        document.getElementById("text").value = "";
-      });
+      }).then(() => alert("บันทึกแล้ว"));
     }
   </script>
 </body>
