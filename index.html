@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <title>Expense</title>
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
@@ -23,13 +22,25 @@
     function send() {
       const text = document.getElementById("text").value;
 
-      fetch("https://script.google.com/macros/s/AKfycbxRsFUQ-hEuaqoJltBIbMixNBHT3i0m0jzStX-2R3c6QpX8eZGyFw_zjv7wbkz-pLCfrA/exec", {
+      if (!text) {
+        alert("กรอกข้อมูลก่อน");
+        return;
+      }
+
+      fetch("https://script.google.com/macros/s/AKfycbyDRAkFFkcAeOVBCjLH_Ds7FskCi3t8tf1_51lB40r7-nzPvgVKQxJwfX8DKgIvOY_v/exec", {
         method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
         body: JSON.stringify({ text: text })
       })
+      .then(res => res.text())
       .then(() => {
         alert("บันทึกแล้ว");
         document.getElementById("text").value = "";
+      })
+      .catch(err => {
+        alert("ERROR: " + err);
       });
     }
   </script>
