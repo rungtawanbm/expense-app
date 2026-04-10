@@ -19,32 +19,19 @@
   <input type="text" id="text" placeholder="เช่น ข้าว 50">
   <button onclick="send()">บันทึก</button>
 
-<script>
-  function send() {
-    const text = document.getElementById("text").value;
+  <script>
+    function send() {
+      const text = document.getElementById("text").value;
 
-    if (!text) {
-      alert("กรอกข้อมูลก่อน");
-      return;
+      fetch("https://script.google.com/macros/s/AKfycbxRsFUQ-hEuaqoJltBIbMixNBHT3i0m0jzStX-2R3c6QpX8eZGyFw_zjv7wbkz-pLCfrA/exec", {
+        method: "POST",
+        body: JSON.stringify({ text: text })
+      })
+      .then(() => {
+        alert("บันทึกแล้ว");
+        document.getElementById("text").value = "";
+      });
     }
-
-    fetch("https://script.google.com/macros/s/AKfycbx0D1Hm2vz8rYLx_Q7CeBLN-kvrv2QhnVZ6K4L8cOZbMEtm1iUyus6m9rkortXSwfr6zw/exec", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ text: text })
-    })
-    .then(res => res.text())
-    .then(data => {
-      alert("บันทึกแล้ว");
-      document.getElementById("text").value = "";
-    })
-    .catch(err => {
-      alert("ERROR: " + err);
-      console.error(err);
-    });
-  }
-</script>
+  </script>
 </body>
 </html>
