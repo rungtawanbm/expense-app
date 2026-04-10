@@ -23,7 +23,7 @@
     function send() {
       const text = document.getElementById("text").value;
 
-      fetch("https://script.google.com/macros/library/d/1scc0JyTnEpw8cYfu3VhOjBrG-TAgBi2AiQ2KJtnme23mFsjpCBUxFbJJ/6", {
+      fetch("https://script.google.com/macros/s/AKfycbz6fvBwLT7aoEylDGl44UZTE6aWnofV3KCKcookYLDE8E8j6Syc3JOt67_7rBKf25VFWA/exec", {
         method: "POST",
         body: JSON.stringify({ text: text })
       })
