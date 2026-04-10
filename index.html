@@ -23,7 +23,7 @@
     function send() {
       const text = document.getElementById("text").value;
 
-      fetch("YOUR_WEB_APP_URL", {
+      fetch("https://script.google.com/macros/s/AKfycbx0D1Hm2vz8rYLx_Q7CeBLN-kvrv2QhnVZ6K4L8cOZbMEtm1iUyus6m9rkortXSwfr6zw/exec", {
         method: "POST",
         body: JSON.stringify({ text: text })
       })
